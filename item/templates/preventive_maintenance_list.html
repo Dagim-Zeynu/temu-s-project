@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Preventive Maintenance Records{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">UoG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/list"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/maintenance/">Corrective Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/items/">Lists of Equipment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h2 class="mb-4 text-center">Preventive Maintenance Records</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Serial Number</th>
+                <th>Description</th>
+                <th>Who Performed</th>
+                <th>How Often</th>
+                <th>Dates Performed</th>
+                <th>Steps Taken</th>
+                <th>Reported At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.model }}</td>
+                <td>{{ record.serial_number }}</td>
+                <td>{{ record.description_of_maintenance_task_performed }}</td>
+                <td>{{ record.who_performed_the_maintenance }}</td>
+                <td>{{ record.how_often_the_maintenance_task_was_performed }}</td>
+                <td>{{ record.dates_the_maintenace_task_was_performed_during_internship }}</td>
+                <td>{{ record.steps_taken_to_ensure_continued_performance_of_maintenance_task }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9" class="text-center">No preventive maintenance records available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

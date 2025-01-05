@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Items List{% endblock %}
+
+{% block content %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">UoG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/list"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/maintenance/">Corrective Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/preventive/">Preventive Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h1 class="text-center">Lists of Equipment</h1>
+
+<!-- Item Cards Section -->
+<div class="row mt-4">
+    {% for medical_device in items %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ medical_device.photo.url }}" class="card-img-top" alt="{{ medical_device.name_of_equipment }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ medical_device.name_of_equipment }}</h5>
+                    <p class="card-text">Name of Equipment: {{ medical_device.name }}</p>
+                    <div class="text-center">
+                        <a href="{% url 'item_detail' medical_device.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 University of Gondar. All Rights Reserved.</p>
+        <p>Made with ❤️ by the Bio-Medical Department.</p>
+    </div>
+</footer>
+
+<!-- Include Chart.js Library -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('itemChart').getContext('2d');
+    const itemChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for item in items %}'{{ item.name }}',{% endfor %}],
+            datasets: [{
+                label: 'Item Prices',
+                data: [{% for item in items %}{{ item.price }},{% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    text: 'Item Prices Overview'
+                }
+            }
+        }
+    });
+</script> -->
+{% endblock %}

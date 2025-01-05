@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Maintenance Records{% endblock %}
+
+{% block content %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#">UoG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/items/">List of Equipments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/preventive/">Preventive Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h2 class="mb-4 text-center">Corrective Maintenance Records</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Serial Number</th>
+                <th>Location</th>
+                <th>Problem Area</th>
+                <th>Cause of Failure</th>
+                <th>Action Taken</th>
+                <th>Reported At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.model }}</td>
+                <td>{{ record.serial_number }}</td>
+                <td>{{ record.location }}</td>
+                <td>{{ record.problem_area }}</td>
+                <td>{{ record.cause_of_failure }}</td>
+                <td>{{ record.action_taken }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No maintenance records available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 University of Gondar. All Rights Reserved.</p>
+        <p>Made with ❤️ by the Bio-Medical Department.</p>
+    </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#">UoG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/maintenance">Corrective Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/preventive/">Preventive Maintenance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#mission">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero bg-primary text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Welcome to the University of Gondar Bio-Medical Department</h1>
+        <p class="lead mb-4">Pioneering education and research in medical sciences for a healthier future.</p>
+        <a href="{% url 'items_list' %}" class="btn btn-light btn-lg">See All Equipments</a>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container my-5">
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/uog logo.png' %}" alt="UoG Logo" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h2 class="h3 text-primary">About Us</h2>
+                <p class="lead">The Bio-Medical Department at the University of Gondar is dedicated to providing world-class education and conducting impactful research in the fields of healthcare and medical sciences.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac tortor euismod, auctor nulla sit amet, dictum ipsum. Vestibulum viverra nisi et libero interdum, vel vulputate odio scelerisque.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="bg-light py-5">
+        <div class="container">
+            <h2 class="h3 text-primary">Our Vision</h2>
+            <p class="lead">Our vision is to be a global leader in medical education and research, fostering innovation for a healthier world.</p>
+            <p>We aim to inspire future generations of medical professionals and researchers by providing exceptional education and groundbreaking research opportunities that address the world's most pressing healthcare challenges.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-5">
+        <div class="container">
+            <h2 class="h3 text-primary">Our Mission</h2>
+            <p class="lead">Our mission is to equip students with cutting-edge knowledge, skills, and research capabilities to advance healthcare and improve lives.</p>
+            <p>We are committed to delivering high-quality education, fostering innovation, and contributing to the advancement of healthcare through pioneering research. Our graduates are empowered to become leaders in their fields.</p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="bg-light py-5">
+        <div class="container">
+            <h2 class="h3 text-primary">Our Core Values</h2>
+            <p class="lead">The values that guide our work are the cornerstone of our success and the foundation of our commitment to excellence.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Integrity</h4>
+                    <p>We adhere to the highest ethical standards in our teaching, research, and interactions with others.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Excellence</h4>
+                    <p>We strive for excellence in everything we do, from education to research to community service.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Innovation</h4>
+                    <p>We encourage creative thinking and new approaches to solving healthcare challenges.</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h4>Collaboration</h4>
+                    <p>We believe in the power of teamwork and work together to achieve our shared goals.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Community</h4>
+                    <p>We are dedicated to making a positive impact on the health and well-being of the communities we serve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 University of Gondar. All Rights Reserved.</p>
+        <p>Made with ❤️ by the Bio-Medical Department.</p>
+    </div>
+</footer>
+
+{% endblock %}
