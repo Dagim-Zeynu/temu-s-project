@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Medical_device_inventory, Corrective_maintenance, Preventive_maintenance
+from .models import Medical_device_inventory, Corrective_maintenance, Preventive_maintenance, MaintenanceAlarm
 from django.contrib.auth.decorators import login_required
 
 def home(request):
@@ -73,4 +73,7 @@ def create_preventive_maintenance(request):
             steps_taken_to_ensure_continued_performance_of_maintenance_task=steps,
         )
     return redirect('preventive_maintenance_list')
+def alarm_list(request):
+    alarms = MaintenanceAlarm.objects.all().order_by('-created_at')
+    return render(request, 'alarm_list.html', {'alarms': alarms})
 

@@ -20,7 +20,7 @@ class Medical_device_inventory(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Corrective_maintenance(models.Model):
     name = models.CharField(max_length=100, verbose_name="Equipment Name")
     model = models.CharField(max_length=100, verbose_name="Model")
@@ -34,7 +34,6 @@ class Corrective_maintenance(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.serial_number}"
-
 
 class Preventive_maintenance(models.Model):
     name = models.CharField(max_length=100, verbose_name="Equipment Name")
@@ -65,3 +64,22 @@ class Preventive_maintenance(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.serial_number}"
+
+class MaintenanceAlarm(models.Model):
+    SEVERITY_CHOICES = [
+        ('high', 'High'),
+        ('moderate', 'Moderate'),
+        ('low', 'Low')
+    ]
+
+    device = models.ForeignKey(Medical_device_inventory, on_delete=models.CASCADE, related_name='alarms')
+    corrective_maintenance = models.ForeignKey(Corrective_maintenance, on_delete=models.SET_NULL, null=True, blank=True, related_name='alarms')
+    preventive_maintenance = models.ForeignKey(Preventive_maintenance, on_delete=models.SET_NULL, null=True, blank=True, related_name='alarms')
+
+    severity = models.CharField(max_length=10, choices=SEVERITY_CHOICES)
+    message = models.TextField(max_length=1000, verbose_name="Alarm Message / Maintenance Required")
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Alarm: {self.device.name} - {self.severity.capitalize()}"

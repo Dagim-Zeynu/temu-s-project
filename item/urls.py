@@ -12,7 +12,7 @@ urlpatterns = [
 
     # Preventive Maintenance URLs
     path('preventive/', views.preventive_maintenance_list, name='preventive_maintenance_list'),
-
+    path('alarm/', views.alarm_list, name='alarm_list'),
 ]
 
 
